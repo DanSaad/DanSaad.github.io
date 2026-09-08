@@ -45,6 +45,4 @@ To provide context for these recommendations, I mapped the specific controls to 
 | Protect | PR.DS: Data security | PR.DS-5: Protections against data leaks. | NIST SP 800-53: AC-6 |
 
 ## Key Takeaways
-This project reinforced a fundamental rule in cybersecurity: **Technology can mitigate human error, but processes must define the boundaries.** 
-
-By implementing strict data classification (ensuring internal data is never stored with public data) and enforcing automated or manual access revocation, the company can significantly decrease its risk profile. Moving forward, I plan to apply these NIST-based principles to more complex network architecture designs.
+This project reinforced a fundamental rule in cybersecurity: **Technology can mitigate human error, but processes must define the boundaries.** By implementing strict data classification (ensuring internal data is never stored with public data) and enforcing automated or manual access revocation, the company can significantly decrease its risk profile.
