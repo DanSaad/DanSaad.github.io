@@ -22,7 +22,7 @@ Documentation and projects associated with my [professional certifications](./Ce
 
 ### 🚀 Personal Projects
 A collection of personal projects, tools, and write-ups showcasing my practical skills and learning journey.
-- [Phishing Bot Utility for Cybersecurity Training](https://github.com/DanSaad/angler-education/blob/main/README.md)
+- [Phishing Bot Utility for Cybersecurity Training](https://github.com/DanSaad/angler-education/)
 
 ---
 [LinkedIn](https://www.linkedin.com/in/dan-saad) | dsaad@alumni.cmu.edu
