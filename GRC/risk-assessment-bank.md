@@ -1,4 +1,10 @@
-# Navigating Risk: Professional Risk Assessment & Mitigation Strategy for a Commercial Banking Entity
+---
+layout: page
+title: Case Study - Bank Risk Assessment & Mitigation Strategy
+subtitle: Navigating Risk using NIST SP 800-30 Rev. 1
+permalink: /GRC/risk-assessment-bank/
+---
+
 
 In the field of cybersecurity, a fundamental axiom is that it is impossible to eliminate all risks; instead, the objective is to manage them intelligently. As a security professional, the ability to distinguish between "operational noise" and "existential threats" is critical for effective resource allocation. During my professional certification, I conducted a comprehensive risk analysis for a hypothetical commercial bank—a high-security environment where data integrity, regulatory compliance, and financial stability are paramount.
 
@@ -31,10 +37,11 @@ Each risk was evaluated on a scale of 1 to 3 (Low, Moderate, High/Catastrophic).
 *   **Analysis:** Phishing remains a primary vector for initial entry. While often localized, a single successful compromise can lead to credential theft or fraudulent wire transfers.
 
 ### 4. Theft (Priority: 3)
-*   **Analysis:** This represents a "Low Likelihood, High Impact" scenario. While the local crime rate is low, the loss of physical funds directly threatens the bank’s ability to meet Federal Reserve requirements.
+*   **Analysis:** This represents a "Low Likelihood, High Impact" scenario. While the local crime rate is low, the loss of physical funds directly threatens the bank's ability to meet Federal Reserve requirements.
 
 ### 5. Supply Chain Disruption (Priority: 2)
 *   **Analysis:** Coastal weather patterns present a known, albeit infrequent, risk to operations.
 
 ## Conclusions
-Being able to identify an organization's attack surface and the likelyhood and severity of the risks facing it is a fundamental first step to actually portecting those assets. Knowing the stakes of a potential compromise of each asset is vital to formulating plans and policies to protect them, and can give direction on the priority of protecting each asset.
+
+Being able to identify an organization's attack surface and the likelihood and severity of the risks facing it is a fundamental first step to actually protecting those assets. Knowing the stakes of a potential compromise of each asset is vital to formulating plans and policies to protect them, and can give direction on the priority of protecting each asset.

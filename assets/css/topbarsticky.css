@@ -1,0 +1,11 @@
+#topbar-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--main-bg) !important;
+  border-bottom: 1px solid var(--main-border-color);
+}
+html {
+  scroll-padding-top: 4rem;
+}
+

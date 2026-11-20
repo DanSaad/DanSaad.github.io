@@ -1,0 +1,110 @@
+<style>
+  /* 1. FILTER CONTROLS HUB */
+  .filter-container {
+    display: block !important;    /* Shifted away from Flexbox since gap is failing */
+    margin-top: 10px !important;
+    margin-bottom: 32px !important; /* FIXED: Strict vertical space below the bottom button row before content starts */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .filter-section {
+    display: block !important;
+  }
+
+  /* FIXED: Explicit vertical breathing room directly between row 1 and row 2 */
+  .filter-section-cat {
+    margin-bottom: 16px !important;
+  }
+
+  .filter-heading {
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 5px 0 !important; /* FIXED: Explicit 5px gap between title and buttons */
+    padding: 0 !important;
+    line-height: 1;
+  }
+
+  .filter-pill-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px 10px !important; /* Kept only for buttons inside the same row if they wrap lines */
+  }
+
+  /* Oval Pill Appearance Preserved */
+  .filter-btn {
+    background-color: #f3f4f6;
+    border: none !important;
+    color: #4b5563;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    border-radius: 9999px !important;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .filter-btn:hover {
+    background-color: #e5e7eb;
+    color: #111827;
+  }
+
+  .filter-btn.active {
+    background-color: #1f2937;
+    color: #ffffff;
+  }
+
+  /* Keeps the counts slightly muted for clean structural balance */
+  .filter-btn .count {
+	/* counts don't work on category because they are in separate subdir.
+	 * the type has prof exp / cert work / etc. and sort of works but this needs more work */
+	display: none !important;
+    opacity: 0.55;
+    font-size: 11px;
+    margin-left: 3px;
+    font-variant-numeric: tabular-nums; /* Prevents text shifting when number widths alter */
+  }
+
+
+  /* 2. THE CONTENT BLOCKS (BORDERLESS & COMPACT) */
+  .matrix-content {
+    margin-top: 32px !important;
+  }
+
+  .doc-block {
+    display: block;
+    border: none !important;       /* No borders around content rows */
+    margin-bottom: 24px !important;/* Clean spacing between distinct content items */
+    background: transparent;
+  }
+
+  /* Strict internal padding overrides to remove vertical gaps inside your content text */
+  .doc-block h3,
+  .doc-block h4,
+  .doc-block p {
+    margin-top: 4px !important;    /* Tightened top vertical gap drastically */
+    margin-bottom: 4px !important; /* Tightened bottom vertical gap */
+    padding-top: 0 !important;     /* Eliminates hidden padding traps */
+    padding-bottom: 0 !important;
+    line-height: 1.4;
+  }
+.matrix-content .doc-block li,
+.matrix-content .doc-block li > p {
+  line-height: 1.5 !important; /* Adjust between 1.4 and 1.6 to match your normal text */
+  margin-top: 0 !important;
+  margin-bottom: 0.35rem !important; /* Controls gap between separate bullets */
+}
+/* Override Chirpy's wide line-height on all content lists */
+.content ul li,
+.content ol li,
+main ul li {
+  line-height: 1.5 !important; /* Matches normal paragraph spacing */
+  margin-bottom: 0.4rem !important; /* Keeps a clean gap between separate bullets */
+}
+
+
+</style>
+

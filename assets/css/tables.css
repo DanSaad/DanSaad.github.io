@@ -1,0 +1,5 @@
+a/* Increase or decrease top/bottom and left/right padding for table rows */
+table th,
+table td {
+  padding: 6px 6px; /* top/bottom: 12px, left/right: 16px */
+}

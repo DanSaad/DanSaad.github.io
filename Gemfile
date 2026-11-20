@@ -1,0 +1,17 @@
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3"
+gem "jekyll-theme-chirpy", "~> 7.0"
+gem "jekyll-feed", "~> 0.17"
+gem "jekyll-seo-tag", "~> 2.8"
+gem "jekyll-sitemap", "~> 1.4"
+gem "jekyll-paginate", "~> 1.1"
+gem "jekyll-include-cache", "~> 0.2"
+gem "jekyll-mermaid"
+gem "kramdown-parser-gfm", "~> 1.1"
+gem "rouge", "~> 4.0"
+gem "webrick", "~> 1.8"
+group :test do
+  gem "html-proofer"
+end
+

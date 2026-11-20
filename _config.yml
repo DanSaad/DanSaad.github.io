@@ -1,3 +1,133 @@
-theme: jekyll-theme-minimal
+theme: jekyll-theme-chirpy
+
 title: Dan Saad Cybersecurity Portfolio
-description: Dan Saad Cybersecurity Portfolio
+description: Cybersecurity Professional | CMU ECE | Google Cybersecurity & AI Certificates
+url: "https://dansaad.github.io"
+baseurl: ""
+
+lang: en
+timezone: America/New_York
+
+# Author settings
+author:
+  name: Dan Saad
+  email: dsaad@alumni.cmu.edu
+  links:
+    - https://www.linkedin.com/in/dan-saad
+    - https://github.com/DanSaad
+
+# Navigation (Chirpy uses 'tabs' for top-level nav)
+tabs:
+  - title: Home
+    url: /
+    icon: fas fa-home
+  - title: Portfolio
+    url: /#portfolio
+    icon: fas fa-shield-alt
+  - title: Resume
+    url: /resume/
+    icon: fas fa-user-shield
+  - title: Certificates
+    url: /#professional-certificates
+    icon: fas fa-certificate
+  - title: Contact
+    url: /#contact
+    icon: fas fa-envelope
+# Collections
+collections:
+  portfolio:
+    output: false # Set to true if you also want standalone pages for each item
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Plugins
+plugins:
+  - jekyll-sitemap
+  - jekyll-include-cache
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - README.md
+  - cv.md
+  - EXP.s34/
+  - EXP.sav/
+  - EXPtmp/
+  - assets/feed.xml
+  - nohup.out
+  - jekyll.log
+
+# Chirpy specific settings
+chirpy:
+  search:
+    enable: false
+  # Header
+  header:
+    logo: ""
+    title: Dan Saad
+    subtitle: Cybersecurity Portfolio
+
+  # Footer
+  footer:
+    since: 2024
+    links:
+      - label: LinkedIn
+        url: https://www.linkedin.com/in/dan-saad
+      - label: GitHub
+        url: https://github.com/DanSaad
+      - label: Email
+        url: mailto:dsaad@alumni.cmu.edu
+
+  # Social sharing
+  social:
+    name: Dan Saad
+    links:
+      - https://www.linkedin.com/in/dan-saad
+      - https://github.com/DanSaad
+
+  # Theme mode
+  theme_mode: light
+
+  # TOC
+  toc:
+    enable: true
+    h_min: 2
+    h_max: 3
+
+  # Code block
+  code_block:
+    copy_button: true
+
+  # Analytics (optional)
+  # google_analytics:
+  #   id: ""
+
+  # Disqus (optional)
+  # disqus:
+  #   shortname: ""
+
+  # Mermaid
+mermaid:
+  enable: true
+
+jekyll-minifier:
+  exclude:
+    - "mermaid"
+

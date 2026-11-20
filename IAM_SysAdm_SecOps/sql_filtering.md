@@ -1,6 +1,13 @@
-# Navigating Security Data: A Case Study in SQL Filtering and Log Analysis
+---
+layout: page
+title: Case Study - SQL Filtering & Log Analysis
+subtitle: Security Operations Data Analysis
+permalink: /IAM_SysAdm_SecOps/sql_filtering/
+---
+
 
 ### Overview
+
 As part of my cybersecurity professional development, I recently completed a project focused on security data analysis and incident investigation. In this case study, I assumed the role of a security professional tasked with analyzing two primary organizational datasets: an **employees** table and a **log_in_attempts** table.
 
 My objective was to identify potential security breaches, such as unauthorized login attempts, and to extract specific employee data for departmental security updates. This project allowed me to demonstrate how structured SQL queries can be used to turn massive amounts of raw data into actionable intelligence. I have compiled my full technical documentation into a formal report, but in this post, I want to share my methodology and the logic I used to solve these specific challenges.
@@ -8,7 +15,9 @@ My objective was to identify potential security breaches, such as unauthorized l
 ---
 
 ### The Methodology
+
 Instead of tackling a massive dataset head-on, I knew I had to find ways to isolate specific indicators of compromise (IoCs) and organizational targets efficiently. My strategy relied on mastering four key SQL components:
+
 1.  **Logical Operators** (`AND`, `OR`, `NOT`) for complex criteria.
 2.  **Comparison Operators** (`>`, `<`) for time-series analysis.
 3.  **Pattern Matching** (`LIKE`) for flexible string filtering (e.g., geographic data).
@@ -19,6 +28,7 @@ Instead of tackling a massive dataset head-on, I knew I had to find ways to isol
 ### Step-by-Step Investigation
 
 #### 1. Identifying After-Hours Anomalies
+
 The first task was to investigate a potential security incident involving failed logins after business hours. I needed to isolate attempts made after 18:00 to see if someone was attempting to brute-force the system during the night.
 
 **My Approach:** I used a "greater than" filter on the `login_time` combined with an `AND` operator to isolate records where `success` was `FALSE`. This ensured the results only showed high-risk nocturnal failures, avoiding the clutter of successful daytime logins.
@@ -39,6 +49,7 @@ WHERE login_time > '18:00' AND success = FALSE;
 *(Total: 19 records)*
 
 #### 2. Isolating Specific Event Windows
+
 A suspicious event was reported on 2022-05-09. To understand the context, I needed to see the activity from that day and the day immediately preceding it.
 
 **My Approach:** I wrote a query using the `OR` operator to capture both '2022-05-09' and '2022-05-08'. To make the results useful for a chronological timeline, I added an `ORDER BY` clause. This allowed me to see the sequence of events leading up to the incident.
@@ -66,6 +77,7 @@ ORDER BY login_date, login_time;
 *(Total: 83 records)*
 
 #### 3. Geographic Filtering (Excluding Mexico)
+
 The security team determined that a specific set of suspicious activities did not originate from Mexico. I was tasked with identifying all login attempts from everywhere *except* Mexico.
 
 **My Approach:** This required a bit more nuance because the country column contained various entries like "MEX" and "MEXICO." I utilized the `NOT` operator in conjunction with `LIKE 'MEX%'`. The wildcard (`%`) ensured that any string starting with "MEX" was excluded, providing a cleaner dataset of international activity.
@@ -86,6 +98,7 @@ WHERE NOT country LIKE 'MEX%';
 *(Total: 161 records)*
 
 #### 4. Targeted Departmental Audits (Marketing & East Building)
+
 The next phase involved identifying specific machines in the Marketing department located within the "East" building for security updates.
 
 **My Approach:** I filtered the `employees` table for the "Marketing" department and applied a `LIKE 'East%'` filter to the `office` column. Since the offices were numbered (e.g., East-170, East-320), the `LIKE` operator was the most efficient way to capture all relevant locations in a single query.
@@ -108,6 +121,7 @@ WHERE department = 'Marketing' AND office LIKE 'East%';
 *(Total: 7 records)*
 
 #### 5. Grouped Departmental Updates (Sales & Finance)
+
 Simultaneously, the team needed to identify employees in two different departments—Sales and Finance—for a separate update.
 
 **My Approach:** I used the `OR` operator to create a single query that returned employees from both departments. This was more efficient than running two separate queries and merging them manually, ensuring a consolidated list for the update team.
@@ -133,6 +147,7 @@ WHERE department = 'Sales' OR department = 'Finance';
 *(Total: 1,185 records)*
 
 #### 6. Exclusionary Filtering (Non-IT Personnel)
+
 Finally, I had to identify every employee who was *not* in the Information Technology department to ensure they received a mandatory security update.
 
 **My Approach:** Rather than listing every department in the company, I took the "path of least resistance" by using the `NOT` operator. By excluding "Information Technology," I automatically captured all other departments in the organization. This minimized the risk of missing a small department that might have been overlooked in a manual list.
@@ -157,7 +172,9 @@ WHERE NOT department = 'Information Technology';
 ---
 
 ### Conclusion & Key Takeaways
+
 This project reinforced the importance of precise data filtering in a security operations center (SOC). I learned that:
+
 *   **Efficiency Matters:** Using `NOT` and `LIKE` can drastically reduce the amount of manual work required to clean a dataset.
 *   **Context is King:** Sorting and specific logical combinations (like `AND` for time/success) are what turn "raw data" into "actionable intelligence."
 *   **Accuracy in Patterns:** Using wildcards (`%`) is essential when dealing with inconsistent data entry (like "MEX" vs. "MEXICO").

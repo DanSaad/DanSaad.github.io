@@ -1,0 +1,13 @@
+@use 'main';
+
+article.px-1 {
+  .page-subtitle {
+    color: var(--heading-color) !important; /* Forces it to match your main title color exactly */
+    font-size: 1.3rem !important;           /* Makes it larger and easy to read */
+    font-weight: 600 !important;            /* Makes it bold */
+    margin-top: 0.25rem !important;         /* Tucks it cleanly under the main title */
+    margin-bottom: 1.5rem !important;       /* Adds a clean gap before the content starts */
+    opacity: 1 !important;                  /* Solid text, no fading or transparency */
+  }
+}
+

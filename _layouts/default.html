@@ -1,0 +1,91 @@
+---
+layout: page
+---
+
+{% include origin-type.html %}
+{% include lang.html %}
+
+<!doctype html>
+<html
+  lang="{{ page.lang | default: site.alt_lang | default: site.lang }}"
+  {%- if site.theme_mode == 'light' or site.theme_mode == 'dark' -%}
+    data-bs-theme="{{ site.theme_mode }}"
+  {%- endif -%}
+>
+  {% include head.html lang=lang %}
+  <!--  <link rel="stylesheet" href="/assets/css/custom.css"> -->
+	<script src="{{ '/assets/js/portfsel.js' | relative_url }}"></script>
+	<link rel="stylesheet" href="/assets/css/subtitle.css">
+	<link rel="stylesheet" href="/assets/css/portsel.css">
+	<link rel="stylesheet" href="/assets/css/topbarsticky.css">
+	<link rel="stylesheet" href="/assets/css/bottomscroll.css">
+	<link rel="stylesheet" href="/assets/css/alignment.css">
+	<link rel="stylesheet" href="/assets/css/tables.css">
+	<link rel="stylesheet" href="/assets/css/linknewtab.css">
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    mermaid.initialize({ startOnLoad: true });
+  });
+</script>
+
+
+  <body class="single-column-layout">
+    <!-- INVISIBLE DOM PLUGINS: Stops page.min.js from throwing an error and breaking your site scripts -->
+	<!-- Structural shells required to satisfy page.min.js tracking functions -->
+<div style="display: none !important;">
+  <div id="sidebar">
+    <button id="sidebar-trigger"></button>
+  </div>
+  <div id="search-wrapper">
+    <button id="search-trigger"></button>
+    <input id="search-input">
+    <div id="search-cancel"></div>
+    <div id="search-hints"></div>
+  </div>
+  <div id="mask"></div>
+</div>
+    {% include topbar.html lang=lang %}
+
+    <div id="main-wrapper">
+      <div class="page-container">
+        <main aria-label="Main Content" class="page-content">
+          {% if layout.layout == 'default' %}
+            {% if page.mermaid %}
+			<!-- {% include mermaid.html %} -->
+              {{ content }}
+            {% else %}
+              {% include refactor-content.html content=content lang=lang %}
+            {% endif %}
+          {% else %}
+            {{ content }}
+          {% endif %}
+        </main>
+
+        <footer aria-label="Site Info" class="page-footer">
+          <p>&copy; 2026 Dan Saad</p>
+        </footer>
+      </div>
+
+      <aside aria-label="Scroll to Top">
+        <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+          <i class="fas fa-angle-up"></i>
+        </button>
+      </aside>
+    </div>
+
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+
+    {% if site.pwa.enabled %}
+      {% include_cached notification.html lang=lang %}
+    {% endif %}
+
+    {% include_cached search-results.html lang=lang %}
+
+    {% for _include in layout.script_includes %}
+      {% assign _include_path = _include | append: '.html' %}
+      {% include {{ _include_path }} %}
+    {% endfor %}
+
+    {% include_cached search-loader.html lang=lang %}
+  </body>
+</html>

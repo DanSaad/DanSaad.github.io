@@ -1,51 +1,71 @@
-# Portfolio Project: Network Traffic Analysis & Incident Response
+---
+layout: page
+title: Case Study - Network Traffic Analysis & Incident Response
+subtitle: TCPdump Log Analysis for DNS/ICMP Issues
+permalink: /NetSec_IDS/network_traffic_analysis/
+---
+
 
 ## Project Overview
-**Title:** Decoding the Traffic: A Deep Dive into Log Analysis for Incident Response
-**Role:** Cybersecurity Analyst (Coursework Simulation)
+
+**Title:** Decoding the Traffic: A Deep Dive into Log Analysis for Incident Response  
+**Role:** Cybersecurity Analyst (Coursework Simulation)  
 **Tools Used:** `tcpdump`, Network Traffic Analysis, ICMP/UDP Protocol Analysis
 
 ## Statement of Purpose
+
 The objective of this project was to demonstrate my ability to perform systematic log analysis to diagnose and resolve complex network service disruptions. In a real-world cybersecurity environment, the ability to translate raw, high-volume packet data into a coherent narrative is essential for minimizing downtime and identifying potential security threats. This project showcases my methodology in isolating network-layer issues, interpreting protocol-specific errors, and providing actionable remediation steps for stakeholders.
 
 ## Technical Analysis Summary
-During this investigation, I was tasked with diagnosing a service outage for the domain `www.yummyrecipesforme.com`. Customers reported a "destination port unreachable" error, which served as the primary lead for the investigation. 
+
+During this investigation, I was tasked with diagnosing a service outage for the domain `www.yummyrecipesforme.com`. Customers reported a "destination port unreachable" error, which served as the primary lead for the investigation.
 
 Using the provided `tcpdump` logs, I conducted a multi-step analysis to identify the root cause:
 
 ### 1. Traffic Isolation and Trend Identification
+
 I began by filtering the raw traffic to identify the primary protocols involved. By analyzing the flow of data, I successfully isolated the communication channels between the clients and the DNS servers. This allowed me to move past the "noise" of general network traffic to focus on the specific failure point.
 
 ### 2. Port Identification and DNS Resolution
+
 The analysis revealed a recurring failure involving **Port 53**. Recognizing this as the standard port for **DNS (Domain Name System)**, I determined that the issue was not a general internet connectivity problem but a specific failure in DNS resolution. The logs confirmed that the system was attempting to resolve the requested domain, but the requests were consistently failing to reach the server.
 
 ### 3. ICMP Error Interpretation
+
 The "smoking gun" in the analysis was the presence of **ICMP (Internet Control Message Protocol)** error messages. I analyzed the "Destination Port Unreachable" messages and correlated them with the DNS traffic on Port 53. This provided a clear narrative of the failure:
+
 *   **Request:** Client requests a web address.
 *   **Failure:** The network attempts to reach the DNS server, but Port 53 is not accepting connections.
 *   **Response:** The network returns an ICMP error indicating the port is unreachable.
 
 ## Findings and Root Cause Analysis
+
 Based on the detailed analysis in the *Cybersecurity Incident Report*, I identified two primary possibilities for the incident:
+
 *   **Service-Level Configuration Issue:** The DNS service may have crashed or stopped running on the host server, meaning no process was listening on the receiving port.
 *   **Network Security Obstruction:** A firewall rule may have been incorrectly configured to block external traffic to Port 53.
 *   **Active Threat Scenario:** The server could be experiencing a **DDoS or DNS flood attack**, overwhelming Port 53 and preventing it from responding to legitimate queries.
 
 ## Recommendations
+
 To resolve the issue and prevent recurrence, I proposed the following immediate actions to the IT team:
+
 1.  **Service Verification:** Confirm if the DNS service is currently active on the host server.
 2.  **Firewall Audit:** Review recent configuration changes to ensure Port 53 is explicitly allowed for external traffic.
 3.  **Mitigation Planning:** If a flood attack is detected, implement stricter firewall configurations and rate-limiting to mitigate the impact of malicious traffic.
 
 ## Final Reflection
+
 This project reinforced my ability to bypass symptoms and identify the underlying technical bottleneck. By focusing on log analysis, I demonstrated how a systematic approach—moving from broad traffic filtering to specific protocol analysis—can lead to a faster and more accurate resolution than manual troubleshooting alone.
 
 ***
 
 ## Appendix: Cybersecurity Incident Report (Source Document)
+
 **Cybersecurity Incident Report: Network Traffic Analysis**
 
 **Part 1: Provide a summary of the problem found in the DNS and ICMP traffic log.**
+
 The UDP protocol reveals that:
 *   The DNS server was unable to fulfill three consecutive DNS queries via the UDP protocol that retrieves the IP address associated with the website's domain name.
 *   No ports were listening on the server, including port 53 which is associated with DNS service.
@@ -66,6 +86,7 @@ This is based on the results of the network analysis, which show that the ICMP e
 The server may be under attack (potentially a DDoS or DNS flood) or there may be an issue with the firewall or network configurations incorrectly blocking internet traffic to port 53.
 
 **Part 2: Explain your analysis of the data and provide at least one cause of the incident.**
+
 **Time incident occurred:**
 Initial incidents (customers of clients unable to access websites) occurred earlier in the day. After being informed, security team began to troubleshoot the issue (1:24 PM).
 

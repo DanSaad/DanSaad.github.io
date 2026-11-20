@@ -1,12 +1,18 @@
-# Case Study: Securing Research Data via Linux Permission Management
+---
+layout: page
+title: Case Study - Securing Research Data with Linux File Permissions
+subtitle: Managing Permissions using the Principle of Least Privilege
+permalink: /IAM_SysAdm_SecOps/linux_fileperms/
+---
 
 ## Project Overview
+
 As part of my cybersecurity professional development, I completed a hands-on project focused on Linux file system security. In this case study, I acted as a security professional for a large organization's research team. My objective was to audit the existing file permissions within a project directory, determine if the permissions match the level of authorization that should be given, and modify any mis-matched permissions to authorize appropriate users and remove unauthorized access, following the **Principle of Least Privilege (PoLP)**.
 
-
-
 ## The Scenario
+
 The research team stored sensitive data within a `projects` directory. I was tasked with identifying files and folders with overly broad permissions and modifying them to ensure that only authorized users had the necessary level of access. I had to ensure that:
+
 1. No "Other" users had write access to any files.
 2. The hidden file (`.project_x.txt`) was read-only for the owner and group, with no access for others.
 3. The `projects` directory and its sub-directories was owned by `researcher2`, and that only `researcher2` could access the `drafts` sub-directory.
@@ -14,6 +20,7 @@ The research team stored sensitive data within a `projects` directory. I was tas
 ## My Approach and Methodology
 
 ### Phase 1: Initial Audit and Discovery
+
 Before making any changes, I had to establish a baseline of the current environment. I navigated to the project directory and used the `ls -latr` command to view the contents.
 
 **Terminal Output:**
@@ -84,10 +91,9 @@ I chose `-latr` because it is the most comprehensive way to view file details:
 * --- (other users have no permissions)
 
 
-
-
 ### Phase 2: Remediation of Unauthorized Write Access
-The organization’s primary policy was to prevent any "Other" user from having write access. I focused on `project_k.txt` to ensure the "Other" category was completely restricted from writing.
+
+The organization's primary policy was to prevent any "Other" user from having write access. I focused on `project_k.txt` to ensure the "Other" category was completely restricted from writing.
 
 **Terminal Output:**
 ```bash
@@ -115,6 +121,7 @@ researcher2@b7d28d38e7ef:/projects$ chmod o-w *project_*.txt
 
 
 ### Phase 3: Securing Hidden Files
+
 Next, I addressed `.project_x.txt`, which is not displayed by default and should be only readable by the owner and group.
 
 **Terminal Output:**
@@ -135,6 +142,7 @@ drwxr-xr-x 3 researcher2 research_team 4096 Jun  9 21:10 ..
 The command adds read permissions to the Group research_team and removes write permissions from the user and group that had them.
 
 ### Phase 4: Restricting Directory Access
+
 The final task was to secure the `projects` directory and its sub-directories. First, the owner should be `researcher2`. Second, only `researcher2` should be able to access `drafts`.
 
 **Terminal Output:**
@@ -155,4 +163,5 @@ drwxr-xr-x 3 researcher2 research_team 4096 Jun  9 21:10 ..
 This command removes execute permissions from groups from the drafts folder, leaving sole access to user `researcher2`.
 
 ## Summary
+
 Each step taken was done to restrict unnecessary and insecure access to files and directories or ensure access to users and groups within the organization on a strict **need-to-know** basis.
