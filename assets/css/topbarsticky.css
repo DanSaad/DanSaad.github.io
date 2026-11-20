@@ -9,3 +9,16 @@ html {
   scroll-padding-top: 4rem;
 }
 
+#topbar nav ul {
+  display: flex;
+  justify-content: space-evenly; /* or space-between */
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#topbar nav {
+  flex-grow: 1;
+}
